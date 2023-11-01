@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>kalkulator Vue.Js</title>
+  </head>
+  <body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <div id="app">
+      <h3>{{ message }}</h3>
+      <p>Hasil: {{ result }}</p>
+      <input type="number" v-model="input1" />
+      <input type="number" v-model="input2" />
+      <br />
+      <button @click="add">+</button>
+      <button @click="subtract">-</button>
+      <button @click="multiply">*</button>
+      <button @click="divide">/</button>
+    </div>
+
+    <script>
+      const { createApp, ref } = Vue;
+
+      createApp({ 
+        setup() {
+          const message = ref("Tugas : membuat kalkulator sederhana");
+          const input1 = ref(0);
+          const input2 = ref(0);
+          const result = ref(0);
+
+          const add = () => {
+            result.value = input1.value + input2.value;
+          };
+          const subtract = () => {
+            result.value = input1.value - input2.value;
+          };
+          const multiply = () => {
+            result.value = input1.value * input2.value;
+          };
+          const divide = () => {
+            result.value = input1.value / input2.value;
+          };
+
+          return {
+            message,
+            input1,
+            input2,
+            result,
+            add,
+            subtract,
+            multiply,
+            divide,
+          };
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>
